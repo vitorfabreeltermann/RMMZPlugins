@@ -33,8 +33,10 @@
  *
  * @help
  * This plugin allows you to manage local map variables and switches
- * defining a range for their indices.
- * 
+ * defining a range for their indices,
+ * the switches and variables within the defined range
+ * will be treated as local to the current map.
+ *
  * License: MIT
  * Credit appreciated if you modify this code: Vitor Fabre Eltermann
  * Copyright (c) 2025 Vitor Fabre Eltermann
@@ -73,7 +75,9 @@
  * 
  * @help
  * Este plugin permite gerenciar variáveis e switches locais do mapa
- * definindo um intervalo para seus índices.
+ * definindo um intervalo para seus índices,
+ * os switches e variáveis dentro do intervalo definido
+ * serão tratadas como locais para o mapa atual.
  * 
  * Licença: MIT
  * Crédito apreciado se você modificar este código: Vitor Fabre Eltermann
