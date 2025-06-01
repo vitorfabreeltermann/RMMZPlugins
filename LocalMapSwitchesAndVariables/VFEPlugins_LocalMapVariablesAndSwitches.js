@@ -102,7 +102,7 @@
     };
 
     Game_Variables.prototype.value = function(variableId) {
-        return variableId >= localMapSwitchesStart && variableId <= localMapSwitchesEnd ?
+        return variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd ?
             this._data[variableId][$gameMap.mapId()] || 0 :
             this._data[variableId] || 0;
     };
