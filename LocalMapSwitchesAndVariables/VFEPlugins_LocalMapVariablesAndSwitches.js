@@ -33,8 +33,10 @@
  *
  * @help
  * This plugin allows you to manage local map variables and switches
- * defining a range for their indices.
- * 
+ * defining a range for their indices,
+ * the switches and variables within the defined range
+ * will be treated as local to the current map.
+ *
  * License: MIT
  * Credit appreciated if you modify this code: Vitor Fabre Eltermann
  * Copyright (c) 2025 Vitor Fabre Eltermann
@@ -73,7 +75,9 @@
  * 
  * @help
  * Este plugin permite gerenciar variáveis e switches locais do mapa
- * definindo um intervalo para seus índices.
+ * definindo um intervalo para seus índices,
+ * os switches e variáveis dentro do intervalo definido
+ * serão tratadas como locais para o mapa atual.
  * 
  * Licença: MIT
  * Crédito apreciado se você modificar este código: Vitor Fabre Eltermann
@@ -102,7 +106,7 @@
     };
 
     Game_Variables.prototype.value = function(variableId) {
-        return variableId >= localMapSwitchesStart && variableId <= localMapSwitchesEnd ?
+        return variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd ?
             this._data[variableId][$gameMap.mapId()] || 0 :
             this._data[variableId] || 0;
     };
@@ -112,7 +116,7 @@
             if (typeof value === "number") {
                 value = Math.floor(value);
             }
-            if (variableId >= localMapSwitchesStart && variableId <= localMapSwitchesEnd) {
+            if (variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd) {
                 this._data[variableId][$gameMap.mapId()] = value;
             } else {
                 this._data[variableId] = value;
