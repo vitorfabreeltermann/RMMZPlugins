@@ -112,7 +112,7 @@
             if (typeof value === "number") {
                 value = Math.floor(value);
             }
-            if (variableId >= localMapSwitchesStart && variableId <= localMapSwitchesEnd) {
+            if (variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd) {
                 this._data[variableId][$gameMap.mapId()] = value;
             } else {
                 this._data[variableId] = value;
