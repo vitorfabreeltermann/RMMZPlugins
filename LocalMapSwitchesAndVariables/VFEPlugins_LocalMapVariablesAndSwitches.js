@@ -98,17 +98,13 @@
     //=============================================================================
     // Game_Variables
     //=============================================================================
-    Game_Variables.prototype.clear = function() {
-        this._data = [];
-        for (let i = localMapVariablesStart; i <= localMapVariablesEnd; i++) {
-            this._data[i] = [];
-        }
-    };
-
     Game_Variables.prototype.value = function(variableId) {
-        return variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd ?
-            this._data[variableId][$gameMap.mapId()] || 0 :
-            this._data[variableId] || 0;
+        if (variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd) {
+            if (!this._data[variableId]) this._data[variableId] = [];
+            return this._data[variableId][$gameMap.mapId()] || 0;
+        } else {
+            return this._data[variableId] || 0;
+        }
     };
 
     Game_Variables.prototype.setValue = function(variableId, value) {
@@ -117,6 +113,7 @@
                 value = Math.floor(value);
             }
             if (variableId >= localMapVariablesStart && variableId <= localMapVariablesEnd) {
+                if (!this._data[variableId]) this._data[variableId] = [];
                 this._data[variableId][$gameMap.mapId()] = value;
             } else {
                 this._data[variableId] = value;
@@ -128,22 +125,19 @@
     //=============================================================================
     // Game_Switches
     //=============================================================================
-    Game_Switches.prototype.clear = function() {
-        this._data = [];
-        for (let i = localMapSwitchesStart; i <= localMapSwitchesEnd; i++) {
-            this._data[i] = [];
-        }
-    };
-
     Game_Switches.prototype.value = function(switchId) {
-        return switchId >= localMapSwitchesStart && switchId <= localMapSwitchesEnd ?
-            !!this._data[switchId][$gameMap.mapId()] :
-            !!this._data[switchId];
+        if (switchId >= localMapSwitchesStart && switchId <= localMapSwitchesEnd) {
+            if (!this._data[switchId]) this._data[switchId] = [];
+            return !!this._data[switchId][$gameMap.mapId()];
+        } else {
+            return !!this._data[switchId];
+        }
     };
 
     Game_Switches.prototype.setValue = function(switchId, value) {
         if (switchId > 0 && switchId < $dataSystem.switches.length) {
             if (switchId >= localMapSwitchesStart && switchId <= localMapSwitchesEnd) {
+                if (!this._data[switchId]) this._data[switchId] = [];
                 this._data[switchId][$gameMap.mapId()] = value;
             } else {
                 this._data[switchId] = value;
